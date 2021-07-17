@@ -1,59 +1,80 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="styles.css">
-	<title>Vue.js Learning</title>
-</head>
-<body>
-	
-	<!-- App -->
-	<div id="app">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Vue.js Learning</title>
+  </head>
+  <body>
+    <!-- App -->
+    <div id="app">
+      <!-- Variable -->
+      <!-- <h1 v-cloak>Name: {{firstName}} {{lastName}}</h1> -->
 
-		<!-- Variable -->
-		<!-- <h1 v-cloak>Name: {{firstName}} {{lastName}}</h1> -->
+      <!-- Function -->
+      <!-- <h1 v-cloak>Name: {{fullName()}}</h1> -->
+      
+			<!-- Computed property or method no need to () when it is called -->
+			<h1 v-cloak>Name: {{fullName}}</h1>
 
-		<!-- Function -->
-		<h1 v-cloak>Name: {{fullName()}}</h1>
+      <!-- Bind HTML TAG Atrribute -->
+      <!-- <a v-bind:href="url" target="_blank" rel="noopener noreferrer">Google</a> -->
+      <a :href="url" target="_blank" rel="noopener noreferrer">Google</a>
 
-		<!-- Bind HTML TAG Atrribute -->
-		<!-- <a v-bind:href="url" target="_blank" rel="noopener noreferrer">Google</a> -->
-		<a :href="url" target="_blank" rel="noopener noreferrer">Google</a>
-		
-		<!-- ROW HTML -->
-		<!-- <p>{{raw_url}}</p> -->
-		<p v-html='raw_url'></p>
-		<hr>
+      <!-- ROW HTML -->
+      <!-- <p>{{raw_url}}</p> -->
+      <p v-html="raw_url"></p>
 
-		<label >First Name: </label>
-		<!-- data get and set by v-model to firstName -->
-		<!-- <input type="text" v-model='firstName' /> -->
+      <hr />
 
-		<!-- :value and @input same as v-model but has some extra benifit -->
-		<input type="text" :value='firstName'  @input.prevent="setFirstName('firstName is updated', $event)"/>
-		<hr>
+      <label>First Name: </label>
+      <!-- data get and set by v-model to firstName -->
+      <!-- <input type="text" v-model='firstName' /> -->
 
-		<!-- on click function and expression -->
-		<p>{{age}}</p>
-		<button type="button" v-on:click="increment">Increment</button>
-		<!-- <button type="button" v-on:click="age++">Increment</button> -->
-		<!-- <button type="button" v-on:click="age = age + 1">Increment</button> -->
-		<button type="button" v-on:click="age--">Decrement</button>
-		<hr>
+      <!-- :value and @input same as v-model but has some extra benifit -->
+      <!-- <input
+        type="text"
+        :value="firstName"
+        @input.prevent="setFirstName('firstName is updated', $event)"
+      /> -->
 
-		<!-- @keyup -->
-		<h1>Middle Name: {{middleName}}</h1>
-		<br>
-		<label >Middle Name</label>
-		<input type="text" @keyup.enter="setMiddleName">
-		<hr>
+			<!-- v-model.trim - trim unnecessary spaces -->
+			<!-- v-model.lazy - update value when writing is finished - 1 time update -->
+			<!-- update afte mouse or enter pressed -->
+			<input type="text" v-model.lazy.trim='firstName'/>
+      <hr />
 
-	</div>
+      <!-- on click function and expression -->
+      <!-- <p>{{age}}</p> -->
+      
+			<!-- typeof -->
+			<p>Type of age is: {{typeof age}}</p>
 
-	<script src="https://unpkg.com/vue@next"></script>
-	<script src="./app.js"></script>
-</body>
+      <label>Age</label> <br>
+			<!-- input string to number conversion by v-model.number -->
+      <input type="number" v-model.number="age" /> <br>
+
+      <button type="button" v-on:click="increment">Increment</button>
+      <!-- <button type="button" @click="age++">Increment</button> -->
+      <!-- <button type="button" @click="age = age + 1">Increment</button> -->
+      <button type="button" @click="age--">Decrement</button>
+
+      <!-- we have to press ctrl + button click -->
+      <!-- <button type="button" @click.ctrl="age--">Decrement</button> -->
+
+      <hr />
+
+      <!-- @keyup -->
+      <h1>Middle Name: {{middleName}}</h1>
+      <br />
+      <label>Middle Name</label>
+      <input type="text" @keyup.enter="setMiddleName" />
+      <hr />
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./app.js"></script>
+  </body>
 </html>

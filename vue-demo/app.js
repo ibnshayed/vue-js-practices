@@ -1,6 +1,8 @@
 
 
 const app = Vue.createApp({
+
+	//  data() is for variable
 	data() {
 		return {
 			firstName: 'Emran',
@@ -11,10 +13,10 @@ const app = Vue.createApp({
 			age: 20,
 		}
 	},
+
+	//  method is for methods or functions
 	methods: {
-		fullName() {
-			return `${this.firstName} ${this.lastName.toUpperCase()}`
-		},
+		
 		increment() {
 			// this.age += 1
 			this.age++
@@ -30,6 +32,16 @@ const app = Vue.createApp({
 			this.middleName = event.target.value
 		}
 	},
+
+	// computed is for computed property call when it is need not every render
+	// is any data is change inside the function then the function will called again
+	computed: {
+		fullName() {
+			console.log('fullName method is called...')
+			return `${this.firstName} ${this.lastName.toUpperCase()}`
+		},
+	},
+
 }).mount('#app')
 
 
