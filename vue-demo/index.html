@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<title>Vue.js Learning</title>
+</head>
+<body>
+	
+	<!-- App -->
+	<div id="app">
+
+		<!-- Variable -->
+		<!-- <h1 v-cloak>Name: {{firstName}} {{lastName}}</h1> -->
+
+		<!-- Function -->
+		<h1 v-cloak>Name: {{fullName()}}</h1>
+
+		<!-- Bind HTML TAG Atrribute -->
+		<!-- <a v-bind:href="url" target="_blank" rel="noopener noreferrer">Google</a> -->
+		<a :href="url" target="_blank" rel="noopener noreferrer">Google</a>
+		
+		<!-- ROW HTML -->
+		<!-- <p>{{raw_url}}</p> -->
+		<p v-html='raw_url'></p>
+		<hr>
+
+		<label >First Name: </label>
+		<!-- data get and set by v-model to firstName -->
+		<!-- <input type="text" v-model='firstName' /> -->
+
+		<!-- :value and @input same as v-model but has some extra benifit -->
+		<input type="text" :value='firstName'  @input.prevent="setFirstName('firstName is updated', $event)"/>
+		<hr>
+
+		<!-- on click function and expression -->
+		<p>{{age}}</p>
+		<button type="button" v-on:click="increment">Increment</button>
+		<!-- <button type="button" v-on:click="age++">Increment</button> -->
+		<!-- <button type="button" v-on:click="age = age + 1">Increment</button> -->
+		<button type="button" v-on:click="age--">Decrement</button>
+		<hr>
+
+		<!-- @keyup -->
+		<h1>Middle Name: {{middleName}}</h1>
+		<br>
+		<label >Middle Name</label>
+		<input type="text" @keyup.enter="setMiddleName">
+		<hr>
+
+	</div>
+
+	<script src="https://unpkg.com/vue@next"></script>
+	<script src="./app.js"></script>
+</body>
+</html>
