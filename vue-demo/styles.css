@@ -1,15 +1,38 @@
-
 /* *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 } */
 
-body{
-	padding: 50px;
-	font-size: 24px;
+body {
+  padding: 50px;
+  font-size: 24px;
 }
 
-[v-cloak]{
-	display: none;
+[v-cloak] {
+  display: none;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  background: #45d619;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 150px;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.purple {
+  background: purple;
+}
+
+.black{
+	color: black;
+}
+
+.orange {
+	color: orange;
 }

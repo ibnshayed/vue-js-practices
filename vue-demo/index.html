@@ -15,11 +15,11 @@
 
       <!-- Function -->
       <!-- <h1 v-cloak>Name: {{fullName()}}</h1> -->
-      
-			<!-- Computed property or method no need to () when it is called -->
-			<h1 v-cloak>Name: {{fullName}}</h1>
 
-      <!-- Bind HTML TAG Atrribute -->
+      <!-- Computed property or method no need to () when it is called -->
+      <h1 v-cloak>Name: {{fullName}}</h1>
+
+      <!-- Bind HTML TAG Atrribute with v-bind:href or :href -->
       <!-- <a v-bind:href="url" target="_blank" rel="noopener noreferrer">Google</a> -->
       <a :href="url" target="_blank" rel="noopener noreferrer">Google</a>
 
@@ -29,6 +29,7 @@
 
       <hr />
 
+      <!-- input value get and set -->
       <label>First Name: </label>
       <!-- data get and set by v-model to firstName -->
       <!-- <input type="text" v-model='firstName' /> -->
@@ -40,21 +41,21 @@
         @input.prevent="setFirstName('firstName is updated', $event)"
       /> -->
 
-			<!-- v-model.trim - trim unnecessary spaces -->
-			<!-- v-model.lazy - update value when writing is finished - 1 time update -->
-			<!-- update afte mouse or enter pressed -->
-			<input type="text" v-model.lazy.trim='firstName'/>
+      <!-- v-model.trim - trim unnecessary spaces -->
+      <!-- v-model.lazy - update value when writing is finished - 1 time update -->
+      <!-- update afte mouse or enter pressed -->
+      <input type="text" v-model.lazy.trim="firstName" />
       <hr />
 
       <!-- on click function and expression -->
       <!-- <p>{{age}}</p> -->
-      
-			<!-- typeof -->
-			<p>Type of age is: {{typeof age}}</p>
 
-      <label>Age</label> <br>
-			<!-- input string to number conversion by v-model.number -->
-      <input type="number" v-model.number="age" /> <br>
+      <!-- typeof -->
+      <p>Type of age is: {{typeof age}}</p>
+
+      <label>Age</label> <br />
+      <!-- input string to number conversion by v-model.number -->
+      <input type="number" v-model.number="age" /> <br />
 
       <button type="button" v-on:click="increment">Increment</button>
       <!-- <button type="button" @click="age++">Increment</button> -->
@@ -72,7 +73,92 @@
       <label>Middle Name</label>
       <input type="text" @keyup.enter="setMiddleName" />
       <hr />
+
+      <!-- :class bind -->
+      <div>
+        <label> <input type="checkbox" v-model="isPurple" /> Purple </label>
+      </div>
+      <br />
+
+      <!-- <div class="circle" :class="{ purple: isPurple}">Hi</div> -->
+
+      <!-- computed class as :class -->
+      <!-- <div class="circle" :class="computed_class">Hi</div> -->
+
+      <!-- selected color -->
+      <select v-model="selectedColor">
+        <option value="">White</option>
+        <option value="black">Black</option>
+        <option value="orange">Orange</option></select
+      ><br />
+
+      <!-- <div class="circle" :class="[selectedColor, computed_class]">Hi</div> -->
+
+      <!-- :style binding -->
+      <input type="number" v-model="size" /><br />
+      <hr />
+
+      <!-- <div
+        class="circle"
+        :class="[selectedColor, computed_class]"
+        :style="{width: size + 'px', height: size + 'px', lineHeight: size + 'px'}"
+      >
+        Hi
+      </div> -->
+
+      <!-- :style takes array of object also -->
+      <div
+        class="circle"
+        :class="[selectedColor, computed_class]"
+        :style="[
+				{width: size + 'px', height: size + 'px', lineHeight: size + 'px'},
+				{transform: 'rotate(30deg)'}
+				]"
+      >
+        Hi
+      </div>
+
+      <!-- Condition Rendering v-if -->
+      <p v-if="mode == 1">Showing v-if directive content</p>
+      <!-- <p v-else-if="mod == 2">Showing v-else-if directive content</p> -->
+
+			<!-- can be different tag -->
+      <!-- <h3 v-else-if="mode == 2">Showing v-else-if directive content</h3> -->
+
+			<!-- template tag -->
+			<template  v-else-if="mode == 2">
+				<p>This is temple tag</p>
+				<h3>Showing v-else-if directive content</h3>
+			</template>
+      <p v-else>Showing v-else directive content</p>
+
+			<!-- v-show directive -->
+			<i v-show="mode == 1">v-show directive content</i><br>
+
+			<!-- selected color -->
+      <select :value='mode' v-model="mode">
+        <option value="1">v-if</option>
+        <option value="2">v-else-if</option>
+        <option value="3">v-else</option></select
+      ><br />
+			<hr>
+
+			<!-- list rendering -->
+			<ul>
+				<li v-for="(bird, index) in birds" :key='bird'>{{bird}} - {{index}}</li>
+			</ul>
+
+			<!-- list rendering Object -->
+			<ul>
+				<li v-for="person in people">
+					<div v-for="(value, key, index) in person">
+						{{key}} : {{value}} - Index: {{index}}
+					</div>
+				</li>
+			</ul>
+
     </div>
+    <!-- App End -->
 
     <script src="https://unpkg.com/vue@next"></script>
     <script src="./app.js"></script>
